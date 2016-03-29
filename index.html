@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head><link rel="stylesheet" type="text/css" href="style.css"></head>
+  <body>
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/backbone/backbone.js"></script>
+
+    <script src="data/data.js"></script>
+
+    <script src="models/PhotoModel.js"></script>
+    <script src="collections/PhotoCollection.js"></script>
+
+    <script src="views/photoView.js"></script>
+    <script src="views/libraryView.js"></script>
+    <script src="views/libraryElementView.js"></script>
+    <script src="views/headerView.js"></script>
+
+
+    <script>
+      $(function() {
+        var library = new PhotoCollection(photoData);
+
+        var header = new HeaderView({collection: library});
+        var photoView = new PhotoView({model: PhotoModel});
+        var libraryView = new LibraryView({collection: library});
+        library.on('swap', function(photo) {
+          photoView.setPhoto(photo);
+        });
+
+        $('body').append(header.$el);
+        $('body').append(photoView.$el);
+        $('body').append('<div id="library" style="width:50%;"></div>');
+        $('#library').html(libraryView.$el);
+        // $('body').append(appView.render()).append(photoView.render());
+
+      });
+    </script>
+  </body>
+</html>

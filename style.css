@@ -1,0 +1,20 @@
+body {
+    background-color: lightblue;
+}
+
+table {
+  border: 1px;
+  width: "200px";
+  border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    background-color: #fff;
+    padding-right: 10px;
+    width: 400px;
+}
+
+th {
+  background-color:#DDD;
+}
